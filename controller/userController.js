@@ -102,7 +102,7 @@ const createUser=async(req,res)=>{
   
     const makeAdmin=async(req,res)=>{
     try {
-        const userId=req.params.id
+        const userId=req.params
         const user=await userModel.findById(userId)
         if(!user){
         return res.status(400).json({
@@ -351,3 +351,4 @@ const createUser=async(req,res)=>{
          changePassword,
         deleteUser
         }
+  
