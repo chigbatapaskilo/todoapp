@@ -1,5 +1,5 @@
 const todorouter=require('express').Router();
-const {createTask, getAllTask, getOne, deleteTask, updateTask}=require('../controller/todocontroller');
+const {createTask, getAllTask, getOne, deleteTask, updateTask}=require('../controller/todoController');
 const { authenticate } = require('../middleware/authorization');
 todorouter.post('/create-task',authenticate,createTask)
 todorouter.get('/getall-task',authenticate,getAllTask)
