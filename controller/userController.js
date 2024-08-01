@@ -102,12 +102,17 @@ const createUser=async(req,res)=>{
   
     const makeAdmin=async(req,res)=>{
     try {
-        const userId=req.params
+        const {userId}=req.params
         const user=await userModel.findById(userId)
         if(!user){
         return res.status(400).json({
             message:"user not found"
         })
+        }
+        if(!user.isVerified){
+         return res.status(400).json({
+            message:'user not verified'
+         })
         }
         user.isAdmin=true
         await user.save()

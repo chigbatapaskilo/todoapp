@@ -10,7 +10,7 @@ router.post("/signup",createUser)
 router.post("/login",loginUser)
 
 router.put("/makeadmin/:userId",makeAdmin)
-router.get("/onestudent",getOneUser)
+router.get("/oneuser/:userId",getOneUser)
 router.get("/allusers/",authenticate,isAdmin,getAll)
 router.get("/verifyuser/:token",verifyEmail)
 router.post("/reverify",resendVerifacation)

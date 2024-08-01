@@ -5,8 +5,8 @@ exports.createTask=async(req,res)=>{
     try {
         const {userId}=req.user
         const {tittle,content}=req.body
-        const user=await userModel.findById(userId)
-        if(!user){
+        const users=await userModel.findById(userId)
+        if(!users){
             return res.status(404).json({
                 message:'user not found'
             })
@@ -17,9 +17,10 @@ exports.createTask=async(req,res)=>{
         })
 
         Todo.user=userId
-        user.todo.push(Todo._id)
         await Todo.save()
-        await user.save()
+        users.todo.push(Todo._id)
+       
+        await users.save()
         res.status(201).json({
             message:'todo content created successfully',
             data:Todo
@@ -39,7 +40,7 @@ exports.getOne=async(req,res)=>{
         const todo=await todoModel.findById(todoId)
         if(!todo){
             return res.status(404).json({
-                message:'user not found'
+                message:'task not found'
             })
         }
      res.status(200).json({
@@ -119,6 +120,10 @@ exports.deleteTask=async(req,res)=>{
          })
         }
         const deleteContent=await todoModel.findByIdAndDelete(todoId)
+        const {userId}=req.user
+        const users=await userModel.findById(userId)
+        users.todo.push(todoId)
+        await users.save()
         res.status(200).json({
             message:'deteted successful'
         })
