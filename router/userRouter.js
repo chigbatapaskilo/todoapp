@@ -1,5 +1,5 @@
 const express=require('express');
-const { createUser, loginUser,makeAdmin,   getAll, verifyEmail, resendVerifacation, forgetPassword, resetPassword, changePassword, deleteUser, getOneUser } = require('../controller/usercontroller');
+const { createUser, loginUser,makeAdmin,   getAll, verifyEmail, resendVerifacation, forgetPassword, resetPassword, changePassword, deleteUser, getOneUser } = require('../controller/userController');
 const { authenticate, isAdmin }=require("../middleware/authorization")
 
 
