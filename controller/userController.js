@@ -1,8 +1,8 @@
 const userModel=require("../model/userModel")
 const bcrypt=require("bcrypt")
 const Jwt=require("jsonwebtoken")
-const sendMail=require("../middleware/sendmail")
-const {htmlFile,verifyTemplate,forgetPasswordtemplate}=require('../middleware/html')
+const sendMail=require("../helpers/sendmail")
+const {htmlFile,verifyTemplate,forgetPasswordtemplate}=require('../helpers/html')
 
 const createUser=async(req,res)=>{
     try {
