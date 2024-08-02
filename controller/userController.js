@@ -29,7 +29,7 @@ const createUser=async(req,res)=>{
             // get token to verify if a user signs up
             const token=Jwt.sign({
                 userId:user._id,
-                password:user.password
+                email:user.email
                  },process.env.JWT_SECRET
                  ,{expiresIn:"1h"})
                  
@@ -165,7 +165,7 @@ const createUser=async(req,res)=>{
             const {token}=req.params
             // verify the email
             const {userEmail}=Jwt.verify(token,process.env.JWT_SECRET)
-            console.log(userEmail)
+            
             // get the user from the with the email
             const user=await userModel.findOne({email:userEmail});
             // check if the user is in the database
