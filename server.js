@@ -1,8 +1,7 @@
 const express=require("express")
 const cors=require('cors')
 const router = require("./router/userRouter")
-const todorouter=require("./router/todoRouter")
-
+const todorouter=require('./router/todoRouter')
 
 require("./config/db")
 

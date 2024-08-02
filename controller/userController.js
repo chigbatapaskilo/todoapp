@@ -33,7 +33,7 @@ const createUser=async(req,res)=>{
                  },process.env.JWT_SECRET
                  ,{expiresIn:"1h"})
                  
-            const verifyLink= `${req.protocol}://${req.get("host")}/api/v1/verifyuser/${user._id}/${token}`
+            const verifyLink= `https://todoapp-2-rnv7.onrender.com://${req.get("host")}/api/v1/user/verifyuser/${token}`
             let mailOptions={
                 email:user.email,
                 subject:'verification email',
@@ -217,7 +217,7 @@ const createUser=async(req,res)=>{
             }
             // create a new token for the user
             const token=Jwt.sign({userId:user._id,userEmail:user.email},process.env.JWT_SECRET,{expiresIn:'20mins'})
-            const verifyLink= `${req.protocol}://${req.get("host")}/api/v1/user/verifyuser/${token}`
+            const verifyLink= `https://todoapp-2-rnv7.onrender.com://${req.get("host")}/api/v1/user/verifyuser/${token}`
             let mailOptions={
                 email:user.email,
                 subject:'verification email',
@@ -247,7 +247,7 @@ const createUser=async(req,res)=>{
             }
             const token=Jwt.sign({userId:user._id,email:user.email},process.env.JWT_SECRET,{expiresIn:'30m'})
             
-            const verifyLink= `${req.protocol}://${req.get("host")}/api/v1/user/reset-password/${token}`
+            const verifyLink= `https://todoapp-2-rnv7.onrender.com://${req.get("host")}/api/v1/user/reset-password/${token}`
             let mailOptions={
                 email:user.email,
                 subject:'verification email',
