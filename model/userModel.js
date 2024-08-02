@@ -11,7 +11,8 @@ email:{
     type:String,
     lowerCase:true,
     require:true,
-    trim:true
+    trim:true,
+    unique:true
 },
 password:{
     type:String,
